@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日文學習 App 原型</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Home Screen -->
+    <div id="home" class="screen active">
+      <header>
+        <h1>日文學習</h1>
+        <p class="stage">Stage 1 · N5 基礎</p>
+      </header>
+      <div class="progress-card">
+        <h2>目前故事</h2>
+        <p class="story-title">咖啡店的午後</p>
+        <div class="chapter-progress">
+          <span>第 2 / 4 章</span>
+          <div class="bar"><div class="fill" style="width:50%"></div></div>
+        </div>
+      </div>
+      <button class="primary-btn" onclick="goTo('listen')">繼續今日章節</button>
+      <button class="secondary-btn" onclick="goTo('chapters')">選擇其他章節</button>
+      <button class="text-btn" onclick="goTo('test')">重新測試程度</button>
+    </div>
+
+    <!-- Chapters Screen -->
+    <div id="chapters" class="screen">
+      <header>
+        <button class="back" onclick="goTo('home')">←</button>
+        <h1>故事與章節</h1>
+      </header>
+      <div class="story-list">
+        <div class="story-card">
+          <h3>咖啡店的午後</h3>
+          <div class="chapters">
+            <span class="ch done">1</span>
+            <span class="ch active">2</span>
+            <span class="ch">3</span>
+            <span class="ch locked">4</span>
+          </div>
+        </div>
+        <div class="story-card locked">
+          <h3>公園的邂逅</h3>
+          <p class="locked-text">完成前一個故事後解鎖</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Listening Screen -->
+    <div id="listen" class="screen">
+      <header>
+        <button class="back" onclick="goTo('home')">←</button>
+        <h1>聽力</h1>
+        <p>第 2 章</p>
+      </header>
+      <div class="listen-area">
+        <div class="play-circle" onclick="togglePlay()">▶</div>
+        <div class="audio-bar"><div class="audio-fill" id="audioFill"></div></div>
+        <p class="hint">可選擇顯示關鍵詞提示</p>
+      </div>
+      <button class="primary-btn" onclick="goTo('read')">完成聽力，開始閱讀</button>
+    </div>
+
+    <!-- Reading Screen -->
+    <div id="read" class="screen">
+      <header>
+        <button class="back" onclick="goTo('listen')">←</button>
+        <h1>閱讀</h1>
+        <p>第 2 章</p>
+      </header>
+      <div class="reading-content">
+        <p>店長が新しいコーヒーを出してくれた。</p>
+        <p>「これは特別な豆ですよ」と微笑んだ。</p>
+        <p>私は一口飲んで、思わず驚いた。</p>
+      </div>
+      <div class="read-controls">
+        <button onclick="toggleFurigana()">切換假名</button>
+        <button onclick="goTo('home')">完成章節</button>
+      </div>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="test" class="screen">
+      <header>
+        <button class="back" onclick="goTo('home')">←</button>
+        <h1>程度測試</h1>
+      </header>
+      <div class="test-content">
+        <p>請選擇最符合你目前程度的描述：</p>
+        <button class="option" onclick="finishTest()">能讀假名，知道一些單字</button>
+        <button class="option" onclick="finishTest()">能看懂簡單句子</button>
+        <button class="option" onclick="finishTest()">能讀短文，有一些漢字</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
